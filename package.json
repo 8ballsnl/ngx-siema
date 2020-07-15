@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "rimraf lib && ngc -p tsconfig.publish.es6.json && rollup -c rollup.publish.config.js && npm run postbuild:npm",
     "build:npm": "rimraf lib && ngc -p tsconfig.publish.es6.json && rollup -c rollup.publish.config.js && npm run postbuild:npm",
     "postbuild:npm": "cp src/ngx-siema/package.json LICENSE README.md CHANGELOG.md lib/",
     "test": "ng test",
@@ -14,7 +14,6 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
     "prepare": "npm run build"
   },
-  "main": "dist/main.bundle.js",
   "dependencies": {
     "@angular/animations": "4.2.6",
     "@angular/common": "4.2.6",
